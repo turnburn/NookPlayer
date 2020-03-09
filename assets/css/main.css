@@ -33,6 +33,12 @@ p {
   margin-right: 30px;
 }
 
+.button-container .centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button {
   background: #5A7E9C;
   font-family: 'FinkHeavy';

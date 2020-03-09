@@ -23,6 +23,13 @@ var player = new howler.Howl({
   src: ['../assets/audio/ww/sun/ww-sun-1-am.mp3']
 });
 
+//Volume Slider
+const volSlider = document.getElementById('volSlider')
+
+volSlider.oninput = function() {
+  Howler.volume(this.value / 100);
+}
+
 //Weather Buttons
 const sunBtn = document.getElementById('sunBtn')
 const rainBtn = document.getElementById('rainBtn')
