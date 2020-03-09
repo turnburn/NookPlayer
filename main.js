@@ -22,6 +22,7 @@ function createWindow () {
             {type: 'separator'},
             {
               label: 'Exit',
+              accelerator: process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q',
               click() {
                   app.quit()
               }
