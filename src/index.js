@@ -9,14 +9,21 @@ const games = {
     WILDWORLD: 'ww',
     NEWLEAF: 'nl'
 }
+//Seasons available
+const seasons = {
+    SUN: 'sun',
+    RAIN: 'rain',
+    SNOW: 'snow'
+}
 
 //Initialize the first game to be Wild World
 var game = games.WILDWORLD
+var season = seasons.SUN
 var player = new howler.Howl({
   src: ['../assets/audio/ww/ww-1-am.mp3']
 });
 
-//Buttons 
+//Game Buttons
 const wildworldBtn = document.getElementById('wildworldBtn')
 const newleafBtn = document.getElementById('newleafBtn')
 
@@ -28,6 +35,32 @@ wildworldBtn.addEventListener('click', function(event) {
 newleafBtn.addEventListener('click', function(event) {
 	game = games.NEWLEAF
 	playFile();
+})
+
+//Weather Buttons
+const sunBtn = document.getElementById('sunBtn')
+const rainBtn = document.getElementById('rainBtn')
+const snowBtn = document.getElementById('snowBtn')
+
+sunBtn.addEventListener('click', function(event) {
+	season = seasons.SUN
+	sunBtn.className = "btn active"
+	rainBtn.className = "btn weather"
+	snowBtn.className = "btn weather"
+})
+
+rainBtn.addEventListener('click', function(event) {
+	season = seasons.RAIN
+	sunBtn.className = "btn weather";
+	rainBtn.className = "btn active"
+	snowBtn.className = "btn weather"
+})
+
+snowBtn.addEventListener('click', function(event) {
+	season = seasons.SNOW
+	sunBtn.className = "btn weather"
+	rainBtn.className = "btn weather"
+	snowBtn.className = "btn active"
 })
 
 function playFile(){
@@ -48,10 +81,10 @@ function playFile(){
   	console.log("Running playFile with "+mp3File)
 
     player = new howler.Howl({
-	  src: [mp3File]
-	});
+      src: [mp3File]
+    });
 
-	player.play();
+    player.play();
 
 	player.on('end', function(){
   		playFile();

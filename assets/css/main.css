@@ -44,3 +44,14 @@ button {
   cursor: pointer;
   border-radius: 12px;
 }
+
+.weather, .button {
+  height: 50px;
+  width: 50px;
+}
+
+.active, .button:hover {
+  height: 50px;
+  width: 50px;
+  background-color: #7d91a1;
+}
