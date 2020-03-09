@@ -23,20 +23,6 @@ var player = new howler.Howl({
   src: ['../assets/audio/ww/sun/ww-sun-1-am.mp3']
 });
 
-//Game Buttons
-const wildworldBtn = document.getElementById('wildworldBtn')
-const newleafBtn = document.getElementById('newleafBtn')
-
-wildworldBtn.addEventListener('click', function(event) {
-	game = games.WILDWORLD
-	playFile();
-})
-
-newleafBtn.addEventListener('click', function(event) {
-	game = games.NEWLEAF
-	playFile();
-})
-
 //Weather Buttons
 const sunBtn = document.getElementById('sunBtn')
 const rainBtn = document.getElementById('rainBtn')
@@ -47,6 +33,7 @@ sunBtn.addEventListener('click', function(event) {
 	sunBtn.className = "btn active"
 	rainBtn.className = "btn weather"
 	snowBtn.className = "btn weather"
+	playFile();
 })
 
 rainBtn.addEventListener('click', function(event) {
@@ -54,6 +41,7 @@ rainBtn.addEventListener('click', function(event) {
 	sunBtn.className = "btn weather";
 	rainBtn.className = "btn active"
 	snowBtn.className = "btn weather"
+	playFile();
 })
 
 snowBtn.addEventListener('click', function(event) {
@@ -61,6 +49,27 @@ snowBtn.addEventListener('click', function(event) {
 	sunBtn.className = "btn weather"
 	rainBtn.className = "btn weather"
 	snowBtn.className = "btn active"
+	playFile();
+})
+
+//Game Buttons
+const wildworldBtn = document.getElementById('wildworldBtn')
+const newleafBtn = document.getElementById('newleafBtn')
+
+wildworldBtn.addEventListener('click', function(event) {
+	game = games.WILDWORLD
+	rainBtn.disabled = true;
+	snowBtn.disabled = true;
+	sunBtn.click();
+	playFile();
+})
+
+newleafBtn.addEventListener('click', function(event) {
+	game = games.NEWLEAF
+	rainBtn.disabled = false;
+	snowBtn.disabled = false;
+	sunBtn.click();
+	playFile();
 })
 
 function playFile(){
