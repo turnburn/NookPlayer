@@ -20,7 +20,7 @@ const seasons = {
 var game = games.WILDWORLD
 var season = seasons.SUN
 var player = new howler.Howl({
-  src: ['../assets/audio/ww/ww-1-am.mp3']
+  src: ['../assets/audio/ww/sun/ww-sun-1-am.mp3']
 });
 
 //Game Buttons
@@ -72,10 +72,10 @@ function playFile(){
 	let mp3File = '../assets/audio/';
 
 	if(hour > 12){
-  		mp3File = mp3File.concat(game,'/',game,'-', (hour - 12).toString() ,'-pm.mp3');
+  		mp3File = mp3File.concat(game,'/', season, '/', game,'-', season,'-', (hour - 12).toString() ,'-pm.mp3');
   	}
   	else{
-		mp3File = mp3File.concat(game,'/',game,'-', hour.toString() ,'-am.mp3');
+		mp3File = mp3File.concat(game,'/', season, '/', game,'-', season,'-', (hour).toString() ,'-am.mp3');
   	}
 
   	console.log("Running playFile with "+mp3File)
