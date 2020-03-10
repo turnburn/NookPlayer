@@ -51,13 +51,18 @@ button {
   border-radius: 12px;
 }
 
+.activeGame, .button:hover {
+  background-color: #7d91a1;
+}
+
 .weather, .button {
   height: 50px;
   width: 50px;
 }
 
-.active, .button:hover {
+.activeWeather, .button:hover {
   height: 50px;
   width: 50px;
   background-color: #7d91a1;
 }
+

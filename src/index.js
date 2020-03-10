@@ -6,8 +6,10 @@ const BrowserWindow = electron.remote.BrowserWindow
 
 //Games available
 const games = {
+	ACGC: 'ac',
     WILDWORLD: 'ww',
-    NEWLEAF: 'nl'
+    NEWLEAF: 'nl',
+    CITYFOLK: 'cf'
 }
 //Seasons available
 const seasons = {
@@ -37,36 +39,53 @@ const snowBtn = document.getElementById('snowBtn')
 
 sunBtn.addEventListener('click', function(event) {
 	season = seasons.SUN
-	sunBtn.className = "btn active"
-	rainBtn.className = "btn weather"
-	snowBtn.className = "btn weather"
+	resetWeatherButtons()
+	sunBtn.className = "btn activeWeather"
 	playFile();
 })
 
 rainBtn.addEventListener('click', function(event) {
 	season = seasons.RAIN
-	sunBtn.className = "btn weather";
-	rainBtn.className = "btn active"
-	snowBtn.className = "btn weather"
+	resetWeatherButtons()
+	rainBtn.className = "btn activeWeather"
 	playFile();
 })
 
 snowBtn.addEventListener('click', function(event) {
 	season = seasons.SNOW
-	sunBtn.className = "btn weather"
-	rainBtn.className = "btn weather"
-	snowBtn.className = "btn active"
+	resetWeatherButtons()
+	snowBtn.className = "btn activeWeather"
 	playFile();
 })
 
+function resetWeatherButtons() {
+	sunBtn.className = "btn weather"
+	rainBtn.className = "btn weather"
+	snowBtn.className = "btn weather"	
+}
+
 //Game Buttons
+const animalcrossingBtn = document.getElementById('animalcrossingBtn')
 const wildworldBtn = document.getElementById('wildworldBtn')
 const newleafBtn = document.getElementById('newleafBtn')
+const cityfolkBtn = document.getElementById('cityfolkBtn')
+
+animalcrossingBtn.addEventListener('click', function(event) {
+	game = games.ACGC;
+	rainBtn.disabled = true;
+	snowBtn.disabled = false;
+	resetGameButtons()
+	animalcrossingBtn.className = "btn activeGame"
+	sunBtn.click();
+	playFile();
+})
 
 wildworldBtn.addEventListener('click', function(event) {
 	game = games.WILDWORLD
 	rainBtn.disabled = true;
 	snowBtn.disabled = true;
+	resetGameButtons()
+	wildworldBtn.className = "btn activeGame"
 	sunBtn.click();
 	playFile();
 })
@@ -75,9 +94,28 @@ newleafBtn.addEventListener('click', function(event) {
 	game = games.NEWLEAF
 	rainBtn.disabled = false;
 	snowBtn.disabled = false;
+	resetGameButtons()
+	newleafBtn.className = "btn activeGame"
 	sunBtn.click();
 	playFile();
 })
+
+cityfolkBtn.addEventListener('click', function(event) {
+	game = games.CITYFOLK
+	rainBtn.disabled = false;
+	snowBtn.disabled = false;
+	resetGameButtons()
+	cityfolkBtn.className = "btn activeGame"
+	sunBtn.click();
+	playFile();
+})
+
+function resetGameButtons() {
+	animalcrossingBtn.className = "btn"
+	wildworldBtn.className = "btn"
+	newleafBtn.className = "btn"	
+	cityfolkBtn.className = "btn"	
+}
 
 function playFile(){
 	//Stop playing the current song
